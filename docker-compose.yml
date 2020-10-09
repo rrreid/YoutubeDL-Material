@@ -3,6 +3,7 @@ services:
     ytdl_material:
         environment: 
             ALLOW_CONFIG_MUTATIONS: 'true'
+            VIRTUAL_HOST: yt.reo.pw
         restart: always
         volumes:
             - ./appdata:/app/appdata
@@ -13,3 +14,7 @@ services:
         ports:
             - "8998:17442"
         image: tzahi12345/youtubedl-material:latest
+networks:
+  default:
+    external:
+      name: nginx-proxy
